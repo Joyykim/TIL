@@ -2,7 +2,8 @@
 
 ## Today I Learned..
 
-## Rules
+## My pledge
 
-1. 매일 커밋을 남긴다!
-2. everyday workout
+1. Commit TIL everyday
+2. Talk less, Listen more
+3. Patience is all I need
