@@ -1,4 +1,4 @@
-# TIL
+# Today I Learned
 
 1. Commit TIL everyday!
 2. Study everyday!
