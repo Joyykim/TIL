@@ -10,7 +10,7 @@
 2. Professionalism(Reliability)
 3. Teamwork(Communication)
 4. Knowledge(Domain, General)
-5. Functionality()
+5. Functionality
 6. Implementaion
 7. Design & Architecture
 
