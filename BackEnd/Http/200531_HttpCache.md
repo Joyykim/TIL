@@ -1,16 +1,12 @@
 # Cache
 
-출처: Prevent unnecessary network requests with the HTTP Cache
-https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
+참조: https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching<br>
+https://web.dev/http-cache/<br>
+https://developer.mozilla.org/ko/docs/Web/HTTP/Caching
 
+사실 HTTP Cache는 단일 API가 아닙니다. Cache-Control, ETag, Last-Modified 등 여러 API가 모여서 HTTP 캐싱을 구현하는 겁니다. 그 API들은 모든 브라우저에서 지원합니다.
 
-There isn't actually a single API called the HTTP Cache. It's the general name for a collection of web platform APIs. Those APIs are supported in all browsers:
-
-- Cache-Control
-- ETag
-- Last-Modified
-
-# HTTP Cache를 사용하는 이유
+## HTTP Cache를 사용하는 이유
 
 네트워크를 통해 무언가를 가져오는 작업은 느린 동시에 비용도 많이 듭니다. 크기가 큰 응답은 클라이언트와 서버 사이에 많은 왕복을 필요로 하므로, 응답을 사용할 수 있게 되어 브라우저가 처리할 수 있게 되는 시기가 지연되고 방문자에 대한 데이터 비용도 발생합니다. 따라서 이전에 가져온 리소스를 캐시했다가 재활용할 수 있는 기능은 성능 최적화에 있어 중요한 측면입니다.
 
