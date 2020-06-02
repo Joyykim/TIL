@@ -4,6 +4,8 @@
 https://web.dev/http-cache/<br>
 https://developer.mozilla.org/ko/docs/Web/HTTP/Caching
 
+## 브라우저 호환성
+
 사실 HTTP Cache는 단일 API가 아닙니다. Cache-Control, ETag, Last-Modified 등 여러 API가 모여서 HTTP 캐싱을 구현하는 겁니다. 그 API들은 모든 브라우저에서 지원합니다.
 
 ## HTTP Cache를 사용하는 이유
@@ -16,3 +18,12 @@ https://developer.mozilla.org/ko/docs/Web/HTTP/Caching
 
 서버가 응답을 반환할 때는 응답의 콘텐츠 유형, 길이, 캐싱 지시문, 유효성 검사 토큰 등을 설명하는 HTTP 헤더 모음도 방출합니다. 예를 들어, 위의 교환에서 서버는 1024바이트의 응답을 반환하고, 클라이언트에 최대 120초 동안 이를 캐시하도록 지시하고, 응답이 만료된 후 리소스가 수정되었는지 확인하는 데 사용할 수 있는 유효성 검사 토큰('x234dff')을 제공합니다.
 
+## How the HTTP Cache works
+
+All HTTP requests that the browser makes are first routed to the browser cache to check whether there is a valid cached response that can be used to fulfill the request. If there's a match, the response is read from the cache, which eliminates both the network latency and the data costs that the transfer incurs.
+
+The HTTP Cache's behavior is controlled by a combination of request headers and response headers. In an ideal scenario, you'll have control over both the code for your web application (which will determine the request headers) and your web server's configuration (which will determine the response headers).
+
+Check out MDN's HTTP Caching article for a more in-depth conceptual overview.
+
+https://developer.mozilla.org/ko/docs/Web/HTTP/Caching
