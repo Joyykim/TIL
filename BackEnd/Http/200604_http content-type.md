@@ -1,0 +1,1 @@
+https://kdevkr.github.io/archives/2018/understanding-http-content-types/
