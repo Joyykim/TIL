@@ -10,9 +10,8 @@ https://ko.wikipedia.org/wiki/%EB%A7%88%EC%83%AC%EB%A7%81_(%EC%BB%B4%ED%93%A8%ED
 
 ### docstrings
 
-Serializers and ModelSerializers are similar to Forms and ModelForms.
-Unlike forms, they are not constrained to dealing with HTML output, and
-form encoded input.
+Serializers, ModelSerializers는 Forms, ModelForms와 매우 유사합니다.
+Unlike forms, they are not constrained to dealing with HTML output, and form encoded input.
 
 Serialization in REST framework is a two-phase process:
 
@@ -21,3 +20,10 @@ python primitives.
 2. The process of marshalling between python primitives and request and
 response content is handled by parsers and renderers.
 
+### ModelSerializers
+
+Django에서 Form 클래스와 ModelForm 클래스를 제공하듯, REST 프레임워크에서도 Serializer 클래스와 ModelSerializer 클래스를 제공합니다.
+
+ModelSerializers == Serializer 클래스의 단축 버전
+필드를 자동으로 인식합니다.
+create() 메서드와 update() 메서드가 이미 구현되어 있습니다.
