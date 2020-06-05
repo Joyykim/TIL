@@ -27,3 +27,8 @@ Django에서 Form 클래스와 ModelForm 클래스를 제공하듯, REST 프레�
 ModelSerializers == Serializer 클래스의 단축 버전
 필드를 자동으로 인식합니다.
 create() 메서드와 update() 메서드가 이미 구현되어 있습니다.
+
+model과 fields만 설정해주면 됩니다.
+
+### HyperlinkedModelSerializer
+
