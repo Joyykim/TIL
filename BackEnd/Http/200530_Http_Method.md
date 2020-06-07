@@ -16,6 +16,9 @@ This definition of safe methods does not prevent an implementation from includin
 
 safe methods 정의는 설계 의도일뿐 실제 구현에서의 잠재적인 위험을 방지해주진 않습니다. 예를 들어 리소스를 생성하거나 삭제하는 요청을 GET 메소드로 작성하는 것도 가능합니다. 따라서 개발자 스스로 판단하여 상황에 적절한 HTTP메소드를 사용해야 합니다.
 
+However, this is not mandated by the standard, and it is explicitly acknowledged that it cannot be guaranteed.
+
+GET, HEAD, OPTIONS, TRACE 는 safe methods입니다.
 
 ### Idempotent Methods
 
