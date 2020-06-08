@@ -74,10 +74,6 @@ the serializer class, or simply use a `Serializer` class.
 
 ### HyperlinkedModelSerializer
 
-5/3 4월분 664.21$ 결제
-6/3 5월분 551$ 결제
-
-6/4 4월분 449$ 환불
 
 
 
