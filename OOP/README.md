@@ -18,3 +18,5 @@
 [Enum 활용](https://woowabros.github.io/tools/2017/07/10/java-enum-uses.html)
 
 [객체지향 연습 프로젝트 - 블랙잭](https://jojoldu.tistory.com/62?category=635881)
+
+[생각하라, 객체지향처럼](https://woowabros.github.io/study/2016/07/07/think_object_oriented.html)
