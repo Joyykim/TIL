@@ -1,6 +1,6 @@
 # JitPack을 통해 쉽고 빠르게 배포하기
 
-https://jitpack.io/
+https://jitpack.io/ 참고
 
 ## 1. 깃허브 레포지토리 배포
 <img width="801" alt="스크린샷 2021-07-18 오후 6 22 48" src="https://user-images.githubusercontent.com/56679885/126062213-a19e0d7e-6d8b-4717-8b0d-7b4eca933a65.png">
