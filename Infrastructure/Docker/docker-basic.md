@@ -16,7 +16,9 @@ https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
 <img width="792" alt="스크린샷 2021-08-23 오후 4 53 12" src="https://user-images.githubusercontent.com/56679885/130410920-d13dc8b1-1b1a-4339-9632-950c439201da.png">
 
 name을 지정하지 않고 실행한다면 도커가 임의로 이름을 붙여준다. 
+
 <img width="272" alt="스크린샷 2021-08-23 오후 4 54 44" src="https://user-images.githubusercontent.com/56679885/130411117-2bd2c7e9-a996-450e-a833-cc4189984fbb.png">
+
 이해하기 쉬운 이름을 꼭 붙여주자.
 
 ### -p (포트포워딩)
