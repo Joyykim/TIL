@@ -29,10 +29,10 @@ name을 지정하지 않고 실행한다면 도커가 임의로 이름을 만들
 ```
 docker run -p <host port number>:<container port number>/<protocol> [IMAGE NAME] [OTHER OPTIONS...]
 ```
+- 예) `-p 80:8080`으로 실행 시 호스트의 8080포트로 들어오는 트래픽은 모두 tcp프로토콜을 통해 해당 컨테이너의 8080포트로 전달된다.
+- `<protocol>`은 tcp, udp 등을 넣을 수 있고 디폴트는 tcp이다.
 
-`<protocol>`은 tcp, udp 등을 넣을 수 있고 디폴트는 tcp이다.
-
-예) `-p 80:8080`으로 실행 시 호스트의 8080포트로 들어오는 트래픽은 모두 tcp프로토콜을 통해 해당 컨테이너의 8080포트로 전달된다.
+참고: https://tttsss77.tistory.com/155
 
 ### -v (마운트)
 컨테이너와 호스트의 디렉토리를 연결
