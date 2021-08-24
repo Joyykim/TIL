@@ -2,9 +2,12 @@
 
 ## 도커란?
 https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
+https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html
 
 
 ## 도커 run 옵션
+https://www.daleseo.com/docker-run/
+
 - `-it`
 - `-rm` : 프로세스 중지시 컨테이너 삭제시킴
 - `-e` : 컨테이너 환경변수 설정
@@ -37,7 +40,7 @@ docker run -p <host port number>:<container port number>/<protocol> [IMAGE NAME]
 ### -v (마운트)
 컨테이너와 호스트의 디렉토리를 연결.
 
-
+https://www.daleseo.com/docker-volumes-bind-mounts/
 
 ### -d (Detached 모드)
 컨테이너를 백그라운드(Detached 모드)에서 실행. 도커 실행은 Foreground/Detached 모드가 있는데 Foreground가 디폴트다. Foreground 모드에도 여러 옵션들이 있지만 대부분 백그라운드에서 실행하니 패스.
