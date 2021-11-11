@@ -3,7 +3,6 @@
 
 `@Transactional`의 readOnly 옵션은 해당 트랜잭션을 읽기 전용으로 설정한다.
 해당 옵션은 성능 최적화를 위해서 사용할 수도 있고, 특정 트랜잭션 작업 안에서 쓰기 작업이 일어나는 것을 의도적으로 방지하기 위해서 사용할 수도 있다.
-**주의 - H2와 같은 몇몇 DB는 readOnly 옵션이 지원이 되지 않는다.**
 
 ### JPA(하이버네이트) 사용시 readOnly=true 성능 향상
 JPA에서 `readOnly=true`를 설정하면 엔티티 매니저가 flush호출, 더티체킹을 하지 않는다.
@@ -13,3 +12,16 @@ MANUAL로 설정이 되면 강제로 플러시를 호출하지 않는 한 플러
 커밋되어도 flush호출이 되지 않기 때문에 엔티티의 생성,수정,삭제가 일어나지 않는다.
 
 그리고 변경 감지를 위한 스냅샷을 보관하지 않기 때문에 성능이 향상된다.
+
+### DB 벤더사마다의 차이점
+- H2와 같은 몇몇 DB는 readOnly 옵션이 지원이 되지 않는다.
+
+**MySQL**
+해당 트랜잭션을 이용할 경우 SELECT 문에 대해서만 기능을 지원하며, Transaction ID 설정에 대한 오버헤드를 해결할 수 있다. Read Only 트랜잭션에 대해서는 ID가 부여되지 않는다. 
+추가적으로 세션 별로 임시 테이블을 변경하거나 Lock 쿼리를 실행할 수 있는데, 이는 다른 트랜잭션(Read Write 혹은 다른 Read Only) 들이 가시 할 수 없는 범위이기 때문이다.
+
+
+참고
+- 자바 ORM 표준 JPA 프로그래밍
+- https://willseungh0.tistory.com/75
+- https://lob-dev.tistory.com/entry/DBMS-%EB%B3%84-Transaction-Read-Only%EC%97%90-%EB%8C%80%ED%95%9C-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D-1
