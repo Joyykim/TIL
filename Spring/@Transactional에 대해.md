@@ -38,6 +38,19 @@
 ## propagation
 `Propagation propagation() default Propagation.REQUIRED;`
 
+- `REQUIRED` (default) : 이미 시작된 트랜잭션이 있으면 참여하고 없으면 새로 시작한다. 
+- `REQUIRES_NEW` : 항상 새로운 트랜잭션을 시작한다. 이미 진행 중인 트랜잭션이 있으면 트랜잭션을 잠시 보류시킨다.
+- `SUPPORTS` : 이미 시작된 트랜잭션이 있으면 참여하고, 없으면 트랜잭션없이 진행한다.
+- `NESTED` : 중첩된 트랜잭션은 먼저 시작된 부모 트랜잭션의 커밋과 롤백에는 영향을 받지만 자신의 커밋과 롤백은 부모 트랜잭션에게 영향을 주지 않는다. 메인 트랜잭션이 롤백되면 중첩된 로그 트랜잭션도 같이 롤백되지만, 반대로 중첩된 로그 트랜잭션이 롤백돼도 메인 작업에 이상이 없다면 메인 트랜잭션은 정상적으로 커밋된다.
+- `MANDATORY` : REQUIRED와 비슷하게 이미 시작된 트랜잭션이 있으면 참여한다. 반면에 트랜잭션이 시작된 것이 없으면 새로 시작하는 대신 예외를 발생시킨다. 혼자서는 독립적으로 트랜잭션을 진행하면 안 되는 경우에 사용한다.
+- `NOT_SUPPORTED` : 트랜잭션을 사용하지 않게 한다. 이미 진행 중인 트랜잭션이 있으면 보류시킨다.
+- `NEVER` : 트랜잭션을 사용하지 않도록 강제한다. 이미 진행 중인 트랜잭션도 존재하면 안된다 있다면 예외를 발생시킨다.
+
+주로 쓰이는 옵션: REQUIRED, REQUIRES_NEW, NESTED, SUPPORTS
+
+출처
+- https://oingdaddy.tistory.com/28
+
 ## isolation
 `Isolation isolation() default Isolation.DEFAULT;`
 
@@ -81,30 +94,35 @@ flush 할 때 일어나는 스냅샷 비교와 같은 무거운 로직을 수행
 출처
 - https://cheese10yun.github.io/jpa-flush/
 
+<br>
 
 **1-1.스프링 5.1 이후 사용시 - 읽기 전용 쿼리 힌트 자동적용**
 
 `@Transaction(readOnly=true)`로 설정 시, 하이버네이트 전용 힌트인 `org.hibernate.readOnly`(읽기 전용 쿼리 힌트)가 자동으로 true로 동작한다.
-
 `org.hibernate.readOnly`를 사용하면 **영속성 컨텍스트가 스냅샷을 저장하지 않아서** 메모리 사용량을 최적화 할 수 있다.
-
 스냅샷만 저장하지 않는 것이지, 1차 캐시에는 그대로 저장한다. 똑같은 식별자로 2번 조회했을 경우 반환되는 엔티티의 주소가 같다.
 
 출처
 - https://www.inflearn.com/questions/31497
 - https://joont92.github.io/jpa/JPA-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94/
 
+<br>
 
 **2. MySQL - InnoDB Read-Only Transactions**
 
-readOnly 트랜잭션은 transaction ID(TRX_ID field)를 세팅하는 작업을 할 필요가 없다고 한다.
+readOnly 트랜잭션은 transaction ID(TRX_ID field)를 세팅하는 오버헤드를 줄일 수 있다.
+transaction ID는 쓰기 작업이나 `SELECT ... FOR UPDATE` 같은 lock을 거는 읽기 작업에서 필요한데, readOnly 트랜잭션에선 필요하지 않다.
 
 > InnoDB can avoid the overhead associated with setting up the transaction ID (TRX_ID field) for transactions that are known to be read-only. A transaction ID is only needed for a transaction that might perform write operations or locking reads such as SELECT ... FOR UPDATE. Eliminating unnecessary transaction IDs reduces the size of internal data structures that are consulted each time a query or data change statement constructs a read view.
 
+출처
+- https://dev.mysql.com/doc/refman/5.7/en/innodb-performance-ro-txn.html
 
 
 ## rollbackFor
 `Class<? extends Throwable>[] rollbackFor() default {};`
+
+
 
 ## rollbackForClassName
 `String[] rollbackForClassName() default {};`
@@ -113,8 +131,10 @@ readOnly 트랜잭션은 transaction ID(TRX_ID field)를 세팅하는 작업을 
 ## noRollbackFor
 `Class<? extends Throwable>[] noRollbackFor() default {};`
 
+
 ## noRollbackForClassName
 `String[] noRollbackForClassName() default {};`
+
 
 
 
