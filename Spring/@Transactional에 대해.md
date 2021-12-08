@@ -58,8 +58,8 @@
 
 1. Spring Core 패키지에 포함됨 - `net.sf.cglib.proxy.Enhancer` -> `org.springframework.cglib.proxy`
 2. objenesis 라이브러리를 사용
-  1. 디폴트 생성자가 필요없어짐
-  2. 생성자가 두 번 호출되던 문제 해결
+    1. 디폴트 생성자가 필요없어짐
+    2. 생성자가 두 번 호출되던 문제 해결
 
 기존에 CGLIB가 가지고 있던 한계점들이 개선되었기 때문에 JDK Dynamic Proxy보다 성능이 좋은 CGLIB Proxy를 `@Transactional`의 기본 프록시 매커니즘으로 선택하게 된 것이다.
 
@@ -160,10 +160,12 @@ transaction ID는 쓰기 작업이나 `SELECT ... FOR UPDATE` 같은 lock을 거
 ## rollbackFor
 `Class<? extends Throwable>[] rollbackFor() default {};`
 
-
+`@Transactional`(줄여서 `@Tx`) 는 메서드 내에서 UncheckedException 혹은 Error가 발생하면 트랜잭션을 롤백한다. CheckedException은 롤백하지 않는다.
+만약 CheckedException이 발생했을 때도 롤백하고 싶다면 
 
 ## rollbackForClassName
 `String[] rollbackForClassName() default {};`
+
 
 
 ## noRollbackFor
